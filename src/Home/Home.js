@@ -24,7 +24,7 @@ const Home = () => {
         setRecipes(recipeData.recipes);
         setLoading(false);
       } catch (ex) {
-        if (ex.response.status === 400)
+        if (ex.response !== undefined && ex.response.status === 400)
           toast.error('No Recipes Found. Try Another!');
         setLoading(false);
       }
