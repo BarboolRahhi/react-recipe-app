@@ -34,9 +34,6 @@ const Home = () => {
   }, [query]);
 
   const handleSearch = (query) => {
-    if (query.trim() === '') {
-      return;
-    }
     setQuery(query);
   };
   return (
