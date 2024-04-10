@@ -10,7 +10,7 @@ const RecipeLoader = () => {
     <GridContainer>
       {Array.from({ length: 12 }).map((_, index) => (
         <SkeletonCard key={index}>
-          <SkeletonLoadingItem height="120px" />
+          <SkeletonLoadingItem height="160px" />
           <SkeletonLoadingItem />
           <SkeletonLoadingItem />
         </SkeletonCard>
