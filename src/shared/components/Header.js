@@ -35,6 +35,11 @@ const ToggleButton = styled.button`
   }
 `;
 
+const ToggleIcon = styled.img`
+  height: 24px;
+  width: 24px;
+`;
+
 const Header = ({ theme, onToggle }) => {
   return (
     <HeaderContainer>
@@ -52,9 +57,9 @@ const Header = ({ theme, onToggle }) => {
       </Link>
       <ToggleButton onClick={onToggle}>
         {theme === "light" ? (
-          <img style={{ width: "24px" }} src={day} alt="day" />
+          <ToggleIcon src={day} alt="day" />
         ) : (
-          <img style={{ width: "24px" }} src={night} alt="night" />
+          <ToggleIcon src={night} alt="night" />
         )}
       </ToggleButton>
     </HeaderContainer>
