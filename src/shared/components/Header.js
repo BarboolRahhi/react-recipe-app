@@ -1,9 +1,9 @@
-import React from 'react';
-import recipe from '../recipe-book.svg';
-import styled from 'styled-components';
-import day from '../daylight.svg';
-import night from '../night-mode.svg';
-import { Link } from 'react-router-dom';
+import React from "react";
+import styled from "styled-components";
+import recipe from "../../assets/recipe-book.svg";
+import day from "../../assets/daylight.svg";
+import night from "../../assets/night-mode.svg";
+import { Link } from "react-router-dom";
 
 const HeaderContainer = styled.header`
   padding: 18px 0;
@@ -38,23 +38,23 @@ const ToggleButton = styled.button`
 const Header = ({ theme, onToggle }) => {
   return (
     <HeaderContainer>
-      <Link to='/' style={{ textDecoration: 'none' }}>
+      <Link to="/" style={{ textDecoration: "none" }}>
         <div
           style={{
-            display: 'flex',
-            gap: '12px',
-            alignItems: 'center',
+            display: "flex",
+            gap: "12px",
+            alignItems: "center",
           }}
         >
-          <img style={{ width: '50px' }} src={recipe} alt='logo' />
+          <img style={{ width: "50px" }} src={recipe} alt="logo" />
           <Title>Recipe App</Title>
         </div>
       </Link>
       <ToggleButton onClick={onToggle}>
-        {theme === 'light' ? (
-          <img style={{ width: '24px' }} src={day} alt='day' />
+        {theme === "light" ? (
+          <img style={{ width: "24px" }} src={day} alt="day" />
         ) : (
-          <img style={{ width: '24px' }} src={night} alt='night' />
+          <img style={{ width: "24px" }} src={night} alt="night" />
         )}
       </ToggleButton>
     </HeaderContainer>

@@ -1,46 +1,38 @@
-import React from 'react';
-import { useEffect, useState } from 'react';
-import Axios from 'axios';
+import React from "react";
+import { useState } from "react";
+import RecipeList from "../Recipes/RecipeList";
+import SearchForm from "../Search/SearchForm";
+import RecipeLoader from "../Recipes/RecipeLoader";
+import { useSearchParams } from "react-router-dom";
+import { useRecipes } from "../Recipes/useRecipes";
+import empty_recipes from "../assets/empty_recipes.svg";
 
-import RecipeList from '../Recipes/RecipeList';
-import SearchForm from '../Search/SearchForm';
-import { toast } from 'react-toastify';
-
-const appUrl = 'https://forkify-api.herokuapp.com/api/search';
+const Empty = () => {
+  return (
+    <div style={{ display: "flex", justifyContent: "center" }}>
+      <img style={{ width: "50%" }} src={empty_recipes} alt="empty_recipes" />
+    </div>
+  );
+};
 
 const Home = () => {
-  const [recipes, setRecipes] = useState([]);
-  const [query, setQuery] = useState('pizza');
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    setLoading(true);
-    async function getRecipe(query) {
-      try {
-        const recipeData = await Axios.get(appUrl, {
-          params: { q: query },
-        }).then((res) => res.data);
-
-        setRecipes(recipeData.recipes);
-        setLoading(false);
-      } catch (ex) {
-        if (ex.response !== undefined && ex.response.status === 400)
-          toast.error('No Recipes Found. Try Another!');
-        setLoading(false);
-      }
-    }
-
-    getRecipe(query);
-  }, [query]);
+  const [searchParams] = useSearchParams();
+  const [query, setQuery] = useState(searchParams.get("search") || "pizza");
+  const { recipes, loading } = useRecipes(query);
 
   const handleSearch = (query) => {
     setQuery(query);
   };
+
   return (
     <div>
-      <SearchForm handleSearch={(q) => handleSearch(q)} />
-      {loading && <p style={{ textAlign: 'center' }}>Loading...</p>}
-      {!loading && <RecipeList recipes={recipes} />}
+      <SearchForm
+        defaultValue={query}
+        placeholder={"Search your favourite recipe..."}
+        handleSearch={(q) => handleSearch(q)}
+      />
+      {loading ? <RecipeLoader /> : <RecipeList recipes={recipes} />}
+      {!loading && recipes.length === 0 && <Empty />}
     </div>
   );
 };

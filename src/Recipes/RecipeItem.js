@@ -1,17 +1,17 @@
-import React from 'react';
-import { Card, CardTitle, Image } from './RecipeElements';
-import { useHistory } from 'react-router-dom';
+import React from "react";
+import { Card, CardTitle, Image } from "./RecipeElements";
+import { useNavigate } from "react-router-dom";
 
 const RecipeItem = ({ recipe }) => {
-  let history = useHistory();
+  let navigate = useNavigate();
 
   function handleClick() {
-    history.push(`/recipe/${recipe.recipe_id}`);
+    navigate(`/recipe/${recipe.recipe_id}`);
   }
 
   return (
-    <Card sheight='286px' height='246px' onClick={handleClick}>
-      <Image sheight='200px' height='160px' src={recipe.image_url} />
+    <Card sheight="286px" height="246px" onClick={handleClick}>
+      <Image sheight="200px" height="160px" src={recipe.image_url} />
       <CardTitle>{recipe.title}</CardTitle>
       <small>{recipe.publisher}</small>
     </Card>

@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import { lightTheme } from '../config/Theme';
+import React from "react";
+import styled from "styled-components";
+import { lightTheme } from "../../config/Theme";
 
 const FooterContainer = styled.footer`
   padding: 2rem;

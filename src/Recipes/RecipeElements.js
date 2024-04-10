@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Card = styled.div`
   padding: 8px;
@@ -55,6 +55,7 @@ export const CardTitle = styled.h4`
 export const DetaileCardTitle = styled.h2`
   color: ${({ theme }) => theme.primary};
 `;
+
 export const Image = styled.img`
   width: 100%;
   height: ${(props) => props.height};
@@ -63,4 +64,12 @@ export const Image = styled.img`
   @media only screen and (max-width: 666px) {
     height: ${(props) => props.sheight};
   }
+`;
+
+export const GridContainer = styled.div`
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-gap: 24px;
+  margin-top: 24px;
 `;

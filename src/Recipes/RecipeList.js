@@ -1,14 +1,7 @@
-import React from 'react';
-import RecipeItem from './RecipeItem';
-import styled from 'styled-components';
-
-const GridContainer = styled.div`
-  display: grid;
-  align-items: center;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  grid-gap: 24px;
-  margin-top: 24px;
-`;
+import React from "react";
+import RecipeItem from "./RecipeItem";
+import styled from "styled-components";
+import { GridContainer } from "./RecipeElements";
 
 const RecipeList = ({ recipes }) => {
   return (

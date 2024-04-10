@@ -1,9 +1,9 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const Input = styled.input`
   padding: 1.2rem;
-  margin: 0.5em;
-  color: black;
+  margin: 0.5em 0;
+  color: ${({ theme }) => theme.primary};
   background: ${({ theme }) => theme.secoundaryAlpha};
   border: none;
   font-size: 1.1rem;
