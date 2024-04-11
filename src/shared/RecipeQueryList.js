@@ -97,7 +97,6 @@ export const searchQueries = [
   "tofu",
   "ketchup",
   "hummus",
-  "chili",
   "maple syrup",
   "parma ham",
   "fajitas",

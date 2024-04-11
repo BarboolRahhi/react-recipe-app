@@ -5,6 +5,7 @@ import SearchForm from "../Search/SearchForm";
 import RecipeLoader from "../Recipes/RecipeLoader";
 import { useSearchParams } from "react-router-dom";
 import { useRecipes } from "../Recipes/useRecipes";
+import { searchQueries } from "../shared/RecipeQueryList";
 import empty_recipes from "../assets/empty_recipes.svg";
 
 const Empty = () => {
@@ -27,10 +28,11 @@ const Home = () => {
   return (
     <div>
       <SearchForm
-        defaultValue={query}
+        searchQueries={searchQueries}
         placeholder={"Search your favourite recipe..."}
         handleSearch={(q) => handleSearch(q)}
       />
+
       {loading ? <RecipeLoader /> : <RecipeList recipes={recipes} />}
       {!loading && recipes.length === 0 && <Empty />}
     </div>

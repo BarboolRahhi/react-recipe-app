@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardTitle, Image } from "./RecipeElements";
+import { Card, CardTitle } from "./RecipeElements";
 import { useNavigate } from "react-router-dom";
 import ImageLoader from "../shared/components/ImageLoader";
 

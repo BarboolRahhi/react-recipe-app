@@ -26,10 +26,8 @@ export const DetailCard = styled.div`
   background: ${({ theme }) => theme.secoundary};
   border-radius: 8px;
   transition: transform 0.3s;
+  margin-top: 4px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  &:hover {
-    transform: translateY(-4px);
-  }
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 20px;

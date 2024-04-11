@@ -6,7 +6,7 @@ import night from "../../assets/night-mode.svg";
 import { Link } from "react-router-dom";
 
 const HeaderContainer = styled.header`
-  padding: 18px 0;
+  padding: 18px 4px;
   width: 80%;
   margin: auto;
   display: flex;

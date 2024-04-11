@@ -26,10 +26,10 @@ export const SkeletonLoadingItem = styled.div`
 
   @keyframes loadingAnimation {
     0% {
-      opacity: 0.5;
+      opacity: 0.3;
     }
     100% {
-      opacity: 1;
+      opacity: 0.7;
     }
   }
 `;

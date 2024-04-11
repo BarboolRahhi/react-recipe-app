@@ -3,8 +3,8 @@ import Input from "../shared/components/Input";
 import { useSearchParams } from "react-router-dom";
 import { useDebounce } from "../shared/hooks/useDebounce";
 import styled from "styled-components";
-import { searchQueries } from "../shared/RecipeQueryList";
 import DataList from "../shared/components/DataList";
+import SearchQueryList from "./SearchQueryList";
 
 const SearchContainer = styled.div`
   width: "100%";
@@ -13,22 +13,38 @@ const SearchContainer = styled.div`
   justify-content: "center";
 `;
 
-const SearchForm = ({ handleSearch, placeholder }) => {
+const SearchForm = ({
+  handleSearch,
+  placeholder,
+  defaultValue = "",
+  searchQueries,
+}) => {
   const inputRef = useRef(null);
   const [searchParams, setSearchParams] = useSearchParams();
-  const [query, setQuery] = useState(searchParams.get("search") || "");
-  const debounceValue = useDebounce(query, 1000);
+  const [query, setQuery] = useState(
+    searchParams.get("search") || defaultValue
+  );
+  const debounceValue = useDebounce(query, 500);
 
   const handleOnChange = (e) => {
     const query = e.target.value;
 
+    setQueryParam(query);
+    setQuery(query);
+  };
+
+  const handleOnClick = (name) => {
+    setQueryParam(name);
+    setQuery(name);
+  };
+
+  function setQueryParam(query) {
     if (query.trim() === "") {
       setSearchParams({});
     } else {
       setSearchParams({ search: query });
     }
-    setQuery(query);
-  };
+  }
 
   useEffect(() => {
     if (debounceValue.trim() !== "") {
@@ -50,7 +66,17 @@ const SearchForm = ({ handleSearch, placeholder }) => {
         type="text"
         list="queries_list"
       />
-      <DataList id="queries_list" list={searchQueries} />
+
+      {searchQueries && (
+        <>
+          <DataList id="queries_list" list={searchQueries} />
+          <SearchQueryList
+            selectedQuery={query}
+            searchQueries={searchQueries}
+            onClick={handleOnClick}
+          />
+        </>
+      )}
     </SearchContainer>
   );
 };

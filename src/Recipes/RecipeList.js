@@ -1,6 +1,5 @@
 import React from "react";
 import RecipeItem from "./RecipeItem";
-import styled from "styled-components";
 import { GridContainer } from "./RecipeElements";
 
 const RecipeList = ({ recipes }) => {
