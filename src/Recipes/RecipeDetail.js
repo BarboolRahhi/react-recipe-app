@@ -1,9 +1,19 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { DetailCard, Image, DetaileCardTitle } from "./RecipeElements";
+import { DetailCard, Image, DetaileCardTitle, Chip } from "./RecipeElements";
 import { lightTheme } from "../config/Theme";
 import RecipeDetailsLoader from "./RecipeDetailsLoader";
 import { useRecipeDetails } from "./useRecipeDetails";
+import styled from "styled-components";
+
+const Divider = styled.hr`
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid ${({ theme }) => theme.primary};
+  margin: 1em 0;
+  padding: 0;
+`;
 
 const RecipeIngredients = ({ ingredients }) => {
   return (
@@ -12,7 +22,7 @@ const RecipeIngredients = ({ ingredients }) => {
         ingredients.map((ingredient, index) => (
           <div key={index}>
             <p style={{ margin: "10px 0" }}>{ingredient}</p>
-            <hr />
+            <Divider />
           </div>
         ))}
     </>
@@ -34,8 +44,13 @@ const RecipeDetail = () => {
           <Image sheight="200px" height="440px" src={recipe.image_url} />
           <div>
             <DetaileCardTitle>{recipe.title}</DetaileCardTitle>
-            <small>{recipe.publisher}</small>
-            <h3 style={{ color: lightTheme.primary, margin: "16px 0" }}>
+            <Chip>{recipe.publisher}</Chip>
+            <h3
+              style={{
+                color: lightTheme.primary,
+                margin: "16px 0",
+              }}
+            >
               Ingredients:
             </h3>
             <RecipeIngredients ingredients={recipe.ingredients} />

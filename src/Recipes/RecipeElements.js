@@ -42,9 +42,8 @@ export const CardTitle = styled.h4`
   margin: 0;
   padding: 8px 0;
   line-height: 1.5em;
-  height: 4em;
   width: 100%;
-  white-space: normal;
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   -o-text-overflow: ellipsis;
@@ -70,4 +69,14 @@ export const GridContainer = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   grid-gap: 24px;
   margin-top: 24px;
+`;
+
+export const Chip = styled.div`
+  background: ${({ theme }) => theme.primary};
+  border-radius: 36px;
+  color: ${({ theme }) => theme.secoundary};
+  padding: 0.2rem 0.8rem;
+  margin-top: 4px;
+  display: inline-block;
+  font-size: small;
 `;
