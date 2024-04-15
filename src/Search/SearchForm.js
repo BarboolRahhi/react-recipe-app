@@ -24,11 +24,10 @@ const SearchForm = ({
   const [query, setQuery] = useState(
     searchParams.get("search") || defaultValue
   );
-  const debounceValue = useDebounce(query, 500);
+  const debounceValue = useDebounce(query, 700);
 
   const handleOnChange = (e) => {
     const query = e.target.value;
-
     setQueryParam(query);
     setQuery(query);
   };
@@ -49,9 +48,6 @@ const SearchForm = ({
   useEffect(() => {
     if (debounceValue.trim() !== "") {
       handleSearch(debounceValue);
-      if (inputRef.current) {
-        inputRef.current.blur();
-      }
     }
   }, [debounceValue]);
 

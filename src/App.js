@@ -10,29 +10,32 @@ import RecipeDetail from "./Recipes/RecipeDetail";
 import Footer from "./shared/components/Footer";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { RecipeProvider } from "./context/RecipeContext";
 
 function App() {
   const [theme, themeToggler] = useDarkMode();
   const themeMode = theme === "light" ? lightTheme : darkTheme;
 
   return (
-    <Router>
-      <ThemeProvider theme={themeMode}>
-        <GlobalStyles />
-        <ToastContainer position="bottom-right" />
-        <div className="container">
-          <Header theme={theme} onToggle={themeToggler} />
-          <div className="App">
-            <Routes>
-              <Route exact path="/" element={<Home />} />
-              <Route path="/recipe/:id" element={<RecipeDetail />} />
-              <Route path="*" element={() => <p>Not Found</p>} />
-            </Routes>
+    <RecipeProvider>
+      <Router>
+        <ThemeProvider theme={themeMode}>
+          <GlobalStyles />
+          <ToastContainer position="bottom-right" />
+          <div className="container">
+            <Header theme={theme} onToggle={themeToggler} />
+            <div className="App">
+              <Routes>
+                <Route exact path="/" element={<Home />} />
+                <Route path="/recipe/:id" element={<RecipeDetail />} />
+                <Route path="*" element={() => <p>Not Found</p>} />
+              </Routes>
+            </div>
+            <Footer />
           </div>
-          <Footer />
-        </div>
-      </ThemeProvider>
-    </Router>
+        </ThemeProvider>
+      </Router>
+    </RecipeProvider>
   );
 }
 

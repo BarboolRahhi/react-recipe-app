@@ -21,7 +21,6 @@ const RecipeIngredients = ({ ingredients }) => {
 
 const RecipeDetail = () => {
   const { id } = useParams();
-
   const { recipe, loading } = useRecipeDetails(id);
 
   if (loading) {

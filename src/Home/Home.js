@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useEffect } from "react";
 import RecipeList from "../Recipes/RecipeList";
 import SearchForm from "../Search/SearchForm";
 import RecipeLoader from "../Recipes/RecipeLoader";
@@ -7,6 +7,7 @@ import { useSearchParams } from "react-router-dom";
 import { useRecipes } from "../Recipes/useRecipes";
 import { searchQueries } from "../shared/RecipeQueryList";
 import empty_recipes from "../assets/empty_recipes.svg";
+import { useRecipeContext } from "../context/RecipeContext";
 
 const Empty = () => {
   return (
@@ -18,12 +19,17 @@ const Empty = () => {
 
 const Home = () => {
   const [searchParams] = useSearchParams();
-  const [query, setQuery] = useState(searchParams.get("search") || "pizza");
+  const { setQuery, query } = useRecipeContext();
   const { recipes, loading } = useRecipes(query);
 
   const handleSearch = (query) => {
     setQuery(query);
   };
+
+  useEffect(() => {
+    //set default value to pizza
+    setQuery(searchParams.get("search") || "pizza");
+  }, []);
 
   return (
     <div>
