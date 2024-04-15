@@ -12,6 +12,10 @@ const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  @media only screen and (max-width: 666px) {
+    width: 100%;
+    padding: 18px 12px;
+  }
 `;
 
 const Title = styled.h2`

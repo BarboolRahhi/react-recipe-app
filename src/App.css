@@ -5,9 +5,17 @@
   margin: auto;
   overflow-x: hidden;
 }
+
 .container {
   display: grid;
   grid-template-rows: auto 1fr auto;
   overflow-x: hidden;
   min-height: 100vh;
+}
+
+@media only screen and (max-width: 666px) {
+  .App {
+    width: 100%;
+    padding: 0 12px;
+  }
 }
