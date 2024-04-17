@@ -4,7 +4,7 @@ export const SkeletonCard = styled.div`
   padding: 8px;
   height: ${(props) => props.height};
   background: ${({ theme }) => theme.secoundary};
-  border-radius: 8px;
+  border-radius: 12px;
   transition: transform 0.3s;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   display: flex;
